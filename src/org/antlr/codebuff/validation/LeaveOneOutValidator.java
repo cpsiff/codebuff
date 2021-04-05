@@ -34,6 +34,7 @@ import static org.antlr.codebuff.Tool.SQLITE_CLEAN_DESCR;
 import static org.antlr.codebuff.Tool.SQLITE_NOISY_DESCR;
 import static org.antlr.codebuff.Tool.TSQL_CLEAN_DESCR;
 import static org.antlr.codebuff.Tool.TSQL_NOISY_DESCR;
+import static org.antlr.codebuff.Tool.JAVA_CUSTOM_DESCR;
 import static org.antlr.codebuff.Tool.getFilenames;
 import static org.antlr.codebuff.misc.BuffUtils.filter;
 import static org.antlr.codebuff.misc.BuffUtils.map;
@@ -150,6 +151,7 @@ public class LeaveOneOutValidator {
 		}
 		finally {
 			long final_stop = System.nanoTime();
+			System.out.printf("trainingTimes.size(): " + trainingTimes.size());
 			Double medianTrainingTime = median(trainingTimes);
 			double medianFormattingPerMS = median(formattingTokensPerMS);
 			System.out.printf("Total time %dms\n", (final_stop-start)/1_000_000);
@@ -298,14 +300,15 @@ public class LeaveOneOutValidator {
 	public static void main(String[] args) throws Exception {
 		LangDescriptor[] languages = new LangDescriptor[] {
 			JAVA_DESCR,
-			JAVA8_DESCR,
-			JAVA_GUAVA_DESCR,
-			JAVA8_GUAVA_DESCR,
-			ANTLR4_DESCR,
-			SQLITE_CLEAN_DESCR,
-			TSQL_CLEAN_DESCR,
-			SQLITE_NOISY_DESCR,
-			TSQL_NOISY_DESCR,
+			// JAVA8_DESCR,
+			// JAVA_GUAVA_DESCR,
+			// JAVA8_GUAVA_DESCR,
+			// ANTLR4_DESCR,
+			// SQLITE_CLEAN_DESCR,
+			// TSQL_CLEAN_DESCR,
+			// SQLITE_NOISY_DESCR,
+			// TSQL_NOISY_DESCR,
+			JAVA_CUSTOM_DESCR,
 //			QUORUM_DESCR,
 		};
 		List<String> corpusDirs = map(languages, l -> l.corpusDir);

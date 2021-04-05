@@ -1,0 +1,8 @@
+// Format Example1.java to match stringtemplate4:
+java -jar target/codebuff-1.5.1.jar -g org.antlr.codebuff.Java -rule compilationUnit -corpus corpus/java/training/stringtemplate4 -files java -comment LINE_COMMENT corpus/java/training/custom/Example1.java
+
+// Format Example1.java according to Example1.java:
+java -jar target/codebuff-1.5.1.jar -g org.antlr.codebuff.Java -rule compilationUnit -corpus corpus/java/training/custom -files java -comment LINE_COMMENT corpus/java/training/custom/Example1.java
+
+// Overwrite Output.java in root directory using Example1.java as corpus:
+java -jar target/codebuff-1.5.1.jar -g org.antlr.codebuff.Java -rule compilationUnit -corpus corpus/java/training/custom -files java -comment LINE_COMMENT  -o Output.java Output.java

@@ -31,6 +31,7 @@ import static org.antlr.codebuff.Tool.JAVA_DESCR;
 import static org.antlr.codebuff.Tool.JAVA_GUAVA_DESCR;
 import static org.antlr.codebuff.Tool.SQLITE_CLEAN_DESCR;
 import static org.antlr.codebuff.Tool.TSQL_CLEAN_DESCR;
+import static org.antlr.codebuff.Tool.JAVA_CUSTOM_DESCR;
 import static org.antlr.codebuff.Tool.getFilenames;
 import static org.antlr.codebuff.Tool.version;
 import static org.antlr.codebuff.misc.BuffUtils.filter;
@@ -60,13 +61,14 @@ public class SubsetValidator {
 	public static void main(String[] args) throws Exception {
 		LangDescriptor[] languages = new LangDescriptor[] {
 //			QUORUM_DESCR,
-			ANTLR4_DESCR,
+			// ANTLR4_DESCR,
 			JAVA_DESCR,
-			JAVA8_DESCR,
-			JAVA_GUAVA_DESCR,
-			JAVA8_GUAVA_DESCR,
-			SQLITE_CLEAN_DESCR,
-			TSQL_CLEAN_DESCR,
+			// JAVA8_DESCR,
+			// JAVA_GUAVA_DESCR,
+			// JAVA8_GUAVA_DESCR,
+			// SQLITE_CLEAN_DESCR,
+			// TSQL_CLEAN_DESCR,
+			JAVA_CUSTOM_DESCR,
 		};
 
 		int maxNumFiles = 30;

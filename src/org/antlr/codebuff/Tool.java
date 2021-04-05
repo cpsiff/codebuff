@@ -99,6 +99,9 @@ public class Tool {
 	public static final LangDescriptor TSQL_CLEAN_DESCR =
 		new LangDescriptor("tsql", "corpus/sqlclean/training", ".*\\.sql", tsqlLexer.class, tsqlParser.class, "tsql_file", 4, tsqlLexer.LINE_COMMENT);
 
+	public static final LangDescriptor JAVA_CUSTOM_DESCR =
+		new LangDescriptor("java_custom", "corpus/java/training/custom", ".*\\.java", JavaLexer.class, JavaParser.class, "compilationUnit", 4, JavaLexer.LINE_COMMENT);
+
 	public static LangDescriptor[] languages = new LangDescriptor[] {
 		QUORUM_DESCR,
 		JAVA_DESCR,
@@ -110,6 +113,7 @@ public class Tool {
 		SQLITE_CLEAN_DESCR,
 		TSQL_NOISY_DESCR,
 		TSQL_CLEAN_DESCR,
+		JAVA_CUSTOM_DESCR,
 	};
 
 	public static String version;
