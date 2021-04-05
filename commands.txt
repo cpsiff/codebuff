@@ -6,3 +6,8 @@ java -jar target/codebuff-1.5.1.jar -g org.antlr.codebuff.Java -rule compilation
 
 // Overwrite Output.java in root directory using Example1.java as corpus:
 java -jar target/codebuff-1.5.1.jar -g org.antlr.codebuff.Java -rule compilationUnit -corpus corpus/java/training/custom -files java -comment LINE_COMMENT  -o Output.java Output.java
+
+
+
+// Run google auto-formatter:
+java -jar google-java-format-1.10.0-all-deps.jar -i java_test_set/style_google/*
