@@ -88,25 +88,23 @@ public final class DoubleMath {
       case HALF_EVEN:
         return rint(x);
 
-      case HALF_UP:
-        {
-          double z = rint(x);
-          if (abs(x - z) == 0.5) {
-            return x + copySign(0.5, x);
-          } else {
-            return z;
-          }
+      case HALF_UP: {
+        double z = rint(x);
+        if (abs(x - z) == 0.5) {
+          return x + copySign(0.5, x);
+        } else {
+          return z;
         }
+      }
 
-      case HALF_DOWN:
-        {
-          double z = rint(x);
-          if (abs(x - z) == 0.5) {
-            return x;
-          } else {
-            return z;
-          }
+      case HALF_DOWN: {
+        double z = rint(x);
+        if (abs(x - z) == 0.5) {
+          return x;
+        } else {
+          return z;
         }
+      }
 
       default:
         throw new AssertionError();

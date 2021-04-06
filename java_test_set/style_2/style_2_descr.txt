@@ -1,0 +1,17 @@
+Style 2 is based off of the Google java style, but with one change:
+
+1. Brackets go on the next line, and are lined up:
+public void foo()
+{
+
+}
+instead of 
+public void foo(){
+
+}
+Parentheses over multiple lines act the same as in Google java style:
+System.out.println(
+    "hello"
+);
+Brackets on a single line remain unchanged
+if (true){foo();}

@@ -1,0 +1,23 @@
+Style 1 is based off of google style but with one change:
+
+no spaces on either side of the following characters:
+
+=
++=
+-= (no occurences)
+*=
+/= (no occurences)
+==
+<
+>
+<=
+>= (no occurences)
++
+-
+*
+/
+||
+&&
+!=
+
+done with find and replace " = " with "=" in vs code and similarly for all the others
