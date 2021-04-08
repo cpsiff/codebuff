@@ -21,7 +21,7 @@ public class Example2 {
     public String stringWhile() {
         String var = "";
         while (var.length < 100) {
-            swtich (var.length) {
+            switch (var.length) {
                 case 10:
                     var += "ten";
                     break;
