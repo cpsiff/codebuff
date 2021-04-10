@@ -25,6 +25,7 @@ import static org.antlr.codebuff.Tool.JAVA8_DESCR;
 import static org.antlr.codebuff.Tool.JAVA_DESCR;
 import static org.antlr.codebuff.Tool.SQLITE_CLEAN_DESCR;
 import static org.antlr.codebuff.Tool.TSQL_CLEAN_DESCR;
+import static org.antlr.codebuff.Tool.JAVA_CUSTOM_DESCR;
 import static org.antlr.codebuff.Tool.getFilenames;
 
 public class TestK extends LeaveOneOutValidator {
@@ -38,13 +39,14 @@ public class TestK extends LeaveOneOutValidator {
 
 	public static void main(String[] args) throws Exception {
 		LangDescriptor[] languages = new LangDescriptor[] {
-			JAVA_DESCR,
-			JAVA8_DESCR,
+			// JAVA_DESCR,
+			// JAVA8_DESCR,
 //			JAVA_GUAVA_DESCR,
 //			JAVA8_GUAVA_DESCR,
-			ANTLR4_DESCR,
-			SQLITE_CLEAN_DESCR,
-			TSQL_CLEAN_DESCR,
+			// ANTLR4_DESCR,
+			// SQLITE_CLEAN_DESCR,
+			// TSQL_CLEAN_DESCR,
+			JAVA_CUSTOM_DESCR,
 		};
 
 		int MAX_K = 98; // should be odd
@@ -141,6 +143,12 @@ public class TestK extends LeaveOneOutValidator {
 		List<String> allFiles = getFilenames(new File(rootDir), language.fileRegex);
 		List<InputDocument> documents = Tool.load(allFiles, language);
 		List<Float> errors = new ArrayList<>();
+		// for (int i = 0; i<documents.size(); i++) {
+		// 	Triple<Formatter,Float,Float> results =
+		// 		validate(language, documents, documents.get(i).fileName, k, null, false, false);
+		// 	Float errorRate = results.c;
+		// 	errors.add(errorRate);
+		// }
 		for (int i = 0; i<documents.size(); i++) {
 			Triple<Formatter,Float,Float> results =
 				validate(language, documents, documents.get(i).fileName, k, null, false, false);

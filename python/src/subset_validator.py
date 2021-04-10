@@ -1,6 +1,6 @@
 #
 # AUTO-GENERATED FILE. DO NOT EDIT
-# CodeBuff 1.5.1 'Tue Mar 30 17:22:39 CDT 2021'
+# CodeBuff 1.5.1 'Sat Apr 10 14:04:44 CDT 2021'
 #
 import numpy as np
 import matplotlib.pyplot as plt
@@ -9,7 +9,7 @@ fig = plt.figure()
 ax = plt.subplot(111)
 N = 30
 sizes = range(1,N+1)
-java_custom = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+java_custom = [1.0]
 ax.plot(range(1,len(java_custom)+1), java_custom, label="java_custom", marker='', color='')
 
 ax.yaxis.grid(True, linestyle='-', which='major', color='lightgrey', alpha=0.5)
