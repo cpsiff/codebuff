@@ -8,10 +8,10 @@ import org.antlr.v4.runtime.misc.Utils;
 
 import java.io.File;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static org.antlr.codebuff.Dbg.normalizedLevenshteinDistance;
 import static org.antlr.codebuff.Tool.JAVA_CUSTOM_DESCR;
-import static org.antlr.codebuff.Tool.getFilenames;
 import static org.antlr.codebuff.misc.BuffUtils.filter;
 import static org.antlr.codebuff.misc.BuffUtils.map;
 
@@ -23,7 +23,8 @@ public class CustomValidator {
 	public static void main(String[] args) throws Exception {
 
 		String[] styles = {"style_1", "style_2", "style_3", "style_google"};
-		String[] matchingExamples = {"Example2_1.java", "Example2_2.java", "Example2_3.java", "Example2_google.java"};
+//		String[] matchingExamples = {"Example2_1.java", "Example2_2.java", "Example2_3.java", "Example2_google.java"};
+		String[] matchingExamples = {"Example1.java", "Example1.java", "Example1.java", "Example1.java"};
 
 		HashMap<String, Collection<Float>> allResults = new HashMap<String, Collection<Float>>();
 
@@ -47,14 +48,15 @@ public class CustomValidator {
                     styleResults.add(thisResult.c);
                 }
 			}
-			allResults.put(style, styleResults);
+			allResults.put(styles[i], styleResults);
 		}
 
 		printResults(allResults);
 	}
 
 	public static void printResults(HashMap<String, Collection<Float>> res){
-	    res.forEach((style, accuracies) -> {
+	    AtomicReference<Double> averages = new AtomicReference<>((double) 0);
+		res.forEach((style, accuracies) -> {
             System.out.println("Style: " + style);
             double sum = 0;
             for (Float acc : accuracies) {
@@ -62,7 +64,10 @@ public class CustomValidator {
                 sum += acc;
             }
             System.out.println("    avg: " + sum / accuracies.size());
+			double finalSum = sum;
+			averages.updateAndGet(v -> (double) (v + finalSum/accuracies.size()));
         });
+		System.out.println("\nOverall avg: " + averages.get() / res.size());
     }
 
 	public static Triple<Formatter,Float,Float> validate(LangDescriptor language,
