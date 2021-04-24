@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -8,4 +9,7 @@
     </option>
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="14" project-jdk-type="JavaSDK" />
+=======
+  <component name="ProjectRootManager" version="2" project-jdk-name="openjdk-14" project-jdk-type="JavaSDK" />
+>>>>>>> 27d1a018c9eb13247330440c50b1fcc5881d0a92
 </project>
