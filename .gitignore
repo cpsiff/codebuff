@@ -60,7 +60,7 @@ target/
 *.iws
 
 #Intellij stuff
-.idea/
-out/
-src/.idea/
-src/codebuff.iml
+#.idea/
+#out/
+#src/.idea/
+#src/codebuff.iml
