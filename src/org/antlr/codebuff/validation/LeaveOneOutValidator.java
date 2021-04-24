@@ -25,17 +25,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import static org.antlr.codebuff.Dbg.normalizedLevenshteinDistance;
-import static org.antlr.codebuff.Tool.ANTLR4_DESCR;
-import static org.antlr.codebuff.Tool.JAVA8_DESCR;
-import static org.antlr.codebuff.Tool.JAVA8_GUAVA_DESCR;
-import static org.antlr.codebuff.Tool.JAVA_DESCR;
-import static org.antlr.codebuff.Tool.JAVA_GUAVA_DESCR;
-import static org.antlr.codebuff.Tool.SQLITE_CLEAN_DESCR;
-import static org.antlr.codebuff.Tool.SQLITE_NOISY_DESCR;
-import static org.antlr.codebuff.Tool.TSQL_CLEAN_DESCR;
-import static org.antlr.codebuff.Tool.TSQL_NOISY_DESCR;
-import static org.antlr.codebuff.Tool.JAVA_CUSTOM_DESCR;
-import static org.antlr.codebuff.Tool.getFilenames;
+import static org.antlr.codebuff.Tool.*;
 import static org.antlr.codebuff.misc.BuffUtils.filter;
 import static org.antlr.codebuff.misc.BuffUtils.map;
 import static org.antlr.codebuff.misc.BuffUtils.median;
@@ -47,23 +37,29 @@ public class LeaveOneOutValidator {
 	public static boolean FORCE_SINGLE_THREADED = false;
 
 	public static final Map<String,String> nameToGraphMarker = new HashMap<String,String>() {{
-		put("antlr", ".");
-		put("java_st", "s");
-		put("java8_st", "+");
-		put("java_guava", ">");
-		put("java8_guava", "d");
-		put("sqlite", "o");
-		put("tsql", "p");
+		put("style_1", ".");
+		put("style_2", "s");
+		put("style_google", "+");
+//		put("antlr", ".");
+//		put("java_st", "s");
+//		put("java8_st", "+");
+//		put("java_guava", ">");
+//		put("java8_guava", "d");
+//		put("sqlite", "o");
+//		put("tsql", "p");
 	}};
 
 	public static final Map<String,String> nameToGraphColor = new HashMap<String,String>() {{
-		put("antlr", "k");
-		put("java_st", "g");
-		put("java8_st", "b");
-		put("java_guava", "m");
-		put("java8_guava", "c");
-		put("sqlite", "y");
-		put("tsql", "r");
+		put("style_1", "k");
+		put("style_2", "g");
+		put("style_google", "b");
+//		put("antlr", "k");
+//		put("java_st", "g");
+//		put("java8_st", "b");
+//		put("java_guava", "m");
+//		put("java8_guava", "c");
+//		put("sqlite", "y");
+//		put("tsql", "r");
 	}};
 
 	public String rootDir;
@@ -308,8 +304,11 @@ public class LeaveOneOutValidator {
 			// TSQL_CLEAN_DESCR,
 			// SQLITE_NOISY_DESCR,
 			// TSQL_NOISY_DESCR,
-			JAVA_CUSTOM_DESCR,
+//			JAVA_CUSTOM_DESCR,
 //			QUORUM_DESCR,
+			STYLE_1_DESCR,
+			STYLE_2_DESCR,
+			STYLE_GOOGLE_DESCR
 		};
 		List<String> corpusDirs = map(languages, l -> l.corpusDir);
 		String[] dirs = corpusDirs.toArray(new String[languages.length]);

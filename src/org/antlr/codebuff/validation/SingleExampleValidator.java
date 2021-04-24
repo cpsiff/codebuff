@@ -31,7 +31,7 @@ public class SingleExampleValidator {
 
 		String[] styles = {"style_1", "style_2", "style_google"};
 //		String[] examples = {"Example2_1.java", "Example2_2.java", "Example2_3.java", "Example2_google.java"};
-		String[] examples = {"Example1.java", "Example1.java", "Example1.java"};
+		String[] examples = {"Example1.java", "Example1.java", "Example1.java"}; // Name of corresponding example files in java/training/custom/
 
 		HashMap<String, Collection<Float>> results = evaluate(examples, styles);
 

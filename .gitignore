@@ -58,3 +58,9 @@ target/
 
 #Intelij file
 *.iws
+
+#Intellij stuff
+.idea/
+out/
+src/.idea/
+src/codebuff.iml

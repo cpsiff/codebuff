@@ -102,6 +102,16 @@ public class Tool {
 	public static final LangDescriptor JAVA_CUSTOM_DESCR =
 		new LangDescriptor("java_custom", "corpus/java/training/custom", ".*\\.java", JavaLexer.class, JavaParser.class, "compilationUnit", 4, JavaLexer.LINE_COMMENT);
 
+	public static final LangDescriptor STYLE_1_DESCR =
+			new LangDescriptor("sylte_1", "java_test_set/style_1", ".*\\.java", JavaLexer.class, JavaParser.class, "compilationUnit", 4, JavaLexer.LINE_COMMENT);
+
+	public static final LangDescriptor STYLE_2_DESCR =
+			new LangDescriptor("style_2", "java_test_set/style_2", ".*\\.java", JavaLexer.class, JavaParser.class, "compilationUnit", 4, JavaLexer.LINE_COMMENT);
+
+	public static final LangDescriptor STYLE_GOOGLE_DESCR =
+			new LangDescriptor("style_google", "java_test_set/style_google", ".*\\.java", JavaLexer.class, JavaParser.class, "compilationUnit", 4, JavaLexer.LINE_COMMENT);
+
+
 	public static LangDescriptor[] languages = new LangDescriptor[] {
 		QUORUM_DESCR,
 		JAVA_DESCR,
