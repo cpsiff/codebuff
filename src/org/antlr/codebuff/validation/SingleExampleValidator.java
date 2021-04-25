@@ -30,10 +30,15 @@ public class SingleExampleValidator {
 	public static void main(String[] args) throws Exception {
 
 		String[] styles = {"style_1", "style_2", "style_google"};
-//		String[] examples = {"Example2_1.java", "Example2_2.java", "Example2_3.java", "Example2_google.java"};
-		String[] examples = {"Example1.java", "Example1.java", "Example1.java"}; // Name of corresponding example files in java/training/custom/
 
-		HashMap<String, Collection<Float>> results = evaluate(examples, styles);
+		// Names of corresponding example files in java/training/custom/
+		String[][] examples = {
+				{"ExampleStyle1.java"},
+				{"ExampleStyle2.java"},
+				{"ExampleStyleGoogle.java"}
+		};
+
+		HashMap<String, Collection<Float>> results = evaluate(examples, styles, 1);
 
 		printResults(results);
 		writeToJson(results, "results.json");
@@ -47,17 +52,23 @@ public class SingleExampleValidator {
 	 * @return hashmap of training results
 	 * @throws Exception if files can't be read
 	 */
-	public static HashMap<String, Collection<Float>> evaluate(String[] exampleFiles, String[] styleFolders) throws Exception{
+	public static HashMap<String, Collection<Float>> evaluate(String[][] exampleFiles, String[] styleFolders, int copies) throws Exception{
 		HashMap<String, Collection<Float>> allResults = new HashMap<String, Collection<Float>>();
 		for (int i=0; i<styleFolders.length; i++){
 			File styleFolder = new File(testSetPath + "/" + styleFolders[i]);
-			String curExample = "corpus/java/training/custom/" + exampleFiles[i];
+
+			String[] curExamples = new String[exampleFiles[0].length];
+
+			for(int j=0; j<exampleFiles[i].length; j++){
+				curExamples[j] = "corpus/java/training/custom/" + exampleFiles[i][j];
+			}
+
 			ArrayList<Float> styleResults = new ArrayList<Float>();
+			curExamples = copyList(curExamples, copies);
 			for (File testFile : styleFolder.listFiles()) {
 				if (testFile.getPath().endsWith(".java")) {
 
-					ArrayList<String> trainingFiles = new ArrayList<String>();
-					trainingFiles.add(curExample);
+					ArrayList<String> trainingFiles = new ArrayList<String>(Arrays.asList(curExamples));
 					List<InputDocument> exampleDoc = Tool.load(trainingFiles, langDesc);
 
 					ArrayList<String> testingFiles = new ArrayList<String>();
@@ -72,6 +83,18 @@ public class SingleExampleValidator {
 			allResults.put(styleFolders[i], styleResults);
 		}
 		return allResults;
+	}
+
+	public static String[] copyList(String[] list, int copies){
+		String[] outputList = new String[copies*list.length];
+
+		for(int i=0; i<copies; i++){
+			for(int j=0; j<list.length; j++){
+				outputList[i*list.length+j] = list[j];
+			}
+		}
+
+		return outputList;
 	}
 
 	/**
